@@ -65,7 +65,7 @@ BattleQuest.prototype.initCharacters=function(){
 	this.characters.push(this.loadCharacter(i,genRandomInt(0,characterDBSize-1)));
     }
     var cIA=shuffle(array);
-    var cICount=[3,2,1,3,2,1];
+    var cICount=[3,3,1,3,3,1];
     var cValue=[];
     var i;
     for (i=0;i<customDBSize;i++){
