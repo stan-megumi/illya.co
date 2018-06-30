@@ -284,4 +284,9 @@ function onClearOneTurn(){
     x.updateCharacterCanvasPanel();
 }
 
+function onSoftRefresh(){
+    delete x;
+    x=new BattleQuest();
+    x.init();
+}
 
