@@ -41,7 +41,9 @@ BattleOrder.prototype.reloadOfOrder = function(){
 }
 
 BattleOrder.prototype.addCharacterOfOrder=function(cI,value) {
+
     var order=this.order;
+    log("add "+cI+" "+value+ " "+order.count);
     var i;
     var uninserted=true;
     var result=-1;
@@ -65,6 +67,8 @@ BattleOrder.prototype.addCharacterOfOrder=function(cI,value) {
     }
 
     order.count++;
+
+    log("add "+cI+" "+value+ " "+order.count);
     return result;
 }
 
@@ -172,7 +176,9 @@ BattleOrder.prototype.substituteOfOrder = function(orderEnum1, num1, orderEnum2,
     var candidate=this.substituteOfJoin(orderEnum1, num1, orderEnum2,num2);
     if (candidate>-1) {
 	this.order.index[oI]=candidate;
+	return true;
     }
+    return false;
 }
 
 BattleOrder.prototype.addCardOfOrder=function(cI,value,turn) {
@@ -181,26 +187,33 @@ BattleOrder.prototype.addCardOfOrder=function(cI,value,turn) {
 }
 
 BattleOrder.prototype.removeCharacterOfOrder=function(cI) {
+    log("remove "+cI);
     var order=this.order;
     var oI=this.indexOfCharacterOfOrder(cI); // orderIndex
+
     order.index.splice(oI,1);
     order.value.splice(oI,1);
     order.turn.splice(oI,1);
+
     order.count--;
 }
 
 BattleOrder.prototype.processDeadOfOrder = function(cI){
     var candidate=this.processDeadOfJoin(cI);
     this.removeCharacterOfOrder(cI);
+
     if (candidate>-1) {
-	this.addCharacterOfOrder(candidiate,
+	this.addCharacterOfOrder(candidate,
 				 this.initValueOfCharacterOfOrder(candidate));
     }
+
+    log("dead add "+ candidate);
+    return candidate;
 }
 
 BattleOrder.prototype.clearOneTurnOfOrder = function(ov){
     // ov ordervalue
-
+    log("clear the latest turn with new ordervalue: "+ov)
     var order=this.order;
     var para=this.paraOfOrder;
     var i,k;
@@ -223,7 +236,7 @@ BattleOrder.prototype.clearOneTurnOfOrder = function(ov){
     //
     var sub=order.value[0];
     var len=order.count;
-
+    var removeVec=[];
     for (i=0;i<len;i++){
 	order.value[i]-=sub;
 	k=order.turn[i];
@@ -233,15 +246,16 @@ BattleOrder.prototype.clearOneTurnOfOrder = function(ov){
 	order.turn[i]=k;
 	if (k==para.TurnMax) {
 	    // or card limit
-	    this.removeCharacterOfOrder(order.index[i]);
+	    removeVec.push(order.index[i]);
 	}
     }
+    len=removeVec.length;
+    for (i=0;i<len;i++){
+	this.removeCharacterOfOrder(removeVec[i]);
+    }
 
-    
-    
 
-
-
+    return this.checkSideDeadOfJoin();
 }
 
 
@@ -303,6 +317,5 @@ BattleOrder.prototype.testOfOrder = function(){
     log("--------clear one round ------ with new order value "+r);
     this.clearOneTurnOfOrder(r);
     this.printOfOrder();
-
 
 }

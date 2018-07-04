@@ -162,7 +162,12 @@ BattleJoin.prototype.substituteOfJoin = function(joinEnum1, num1, joinEnum2, num
     var index2=p2.index[num2];
     var result=-1;
     
-    if (index2>para.Empty && p2.turn[num2]==0 && p1.turn[num1]==0) {
+    if (index2>para.Empty
+	&& joinEnum1!=joinEnum2
+	&& p2.turn[num2]==0
+	&& p1.turn[num1]==0
+	&& p1.side==p2.side)
+    {
 	// p.turn ==0 as the support cannot be substituted
 	result=index2;
 	p2.index[num2]=index1;
@@ -178,13 +183,14 @@ BattleJoin.prototype.substituteOfJoin = function(joinEnum1, num1, joinEnum2, num
 
 BattleJoin.prototype.processDeadOfJoin = function(cI){
     // cI character index
+
+    log("dead find "+cI)
     var joinEnum, num;
     var join=this.join;
     var para=this.paraOfJoin;
     var p,p1,len,i,j;
     var b=true;
     var result=-1;
-
 
     var assert=false;
     for (i=join.RJ;i<join.Count;i+=3){
@@ -203,10 +209,9 @@ BattleJoin.prototype.processDeadOfJoin = function(cI){
 
     if (!assert) return -2;
 
-    p=join.p[joinEnum];	
+    p=join.p[joinEnum];
 
-    var ifSupport=(p.turn[num]==para.TurnMax);
-
+    var ifSupport=(p.turn[num]>0);
     
     if (ifSupport) {
 	p1=join.p[joinEnum+2];
@@ -240,11 +245,14 @@ BattleJoin.prototype.processDeadOfJoin = function(cI){
 	}
     }
     // if no candidate
+    log(num+" deadjoin "+joinEnum)
     if (b) {
+
+	p=join.p[joinEnum];
 	p.index[num]=para.Empty;
 	p.count--;
     }
-	
+    
     return result;
 }
 
@@ -326,3 +334,4 @@ BattleJoin.prototype.testOfJoin = function(){
     this.printOfJoin();
     }
 }
+
