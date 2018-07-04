@@ -2,18 +2,58 @@
 
 <body>
 
-<button onclick="onSoftRefresh()">Refresh</button>
-<button onclick="onClearOneTurn()">Clear One Turn</button>
-<label id="Label">Hello</label>
-<canvas id="canvasDemo" height="1000" width="1600">
-Sorry, your browser does not support canvas.
-</canvas>
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td>
+      <button onclick="onSoftRefresh()">Refresh</button>
+      <button onclick="onClearOneTurn()">Clear One Turn</button>
+      <label id="Label">Hello</label>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <canvas id="canvasMain" height="600" width="1200">
+	Sorry, your browser does not support canvas.
+      </canvas>
+    </td>
+  </tr>
+
+  <tr >
+    <td colspan="2">
+      <canvas id="canvasOrder" height="200" width="1200">
+	Sorry, your browser does not support canvas.
+      </canvas>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <canvas id="canvasInfo" height="500" width="600">
+	Sorry, your browser does not support canvas.
+      </canvas>
+    </td>
+
+    <td>
+      <canvas id="canvasAction" height="500" width="600">
+	Sorry, your browser does not support canvas.
+      </canvas>
+    </td>
+  </tr>
+
+
+</table>
+
+
 
  <script src="js/BattleCommon.js" ></script>
  <script src="js/BattleJoin.js" ></script>
  <script src="js/BattleOrder.js" ></script>
  <script src="js/BattleCharacter.js" ></script>
- <script src="js/script.js" ></script>
+ <script src="js/BattleAI.js" ></script>
+ <script src="js/BattleUI.js" ></script>
+ <script src="js/BattleSkillSolver.js" ></script>
+ <script src="js/BattleQuest.js" ></script>
 
 </body>
 </html>
