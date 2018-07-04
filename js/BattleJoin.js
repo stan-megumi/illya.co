@@ -162,7 +162,12 @@ BattleJoin.prototype.substituteOfJoin = function(joinEnum1, num1, joinEnum2, num
     var index2=p2.index[num2];
     var result=-1;
     
-    if (index2>para.Empty && p2.turn[num2]==0 && p1.turn[num1]==0) {
+    if (index2>para.Empty
+	&& joinEnum1!=joinEnum2
+	&& p2.turn[num2]==0
+	&& p1.turn[num1]==0
+	&& p1.side==p2.side)
+    {
 	// p.turn ==0 as the support cannot be substituted
 	result=index2;
 	p2.index[num2]=index1;
@@ -244,7 +249,6 @@ BattleJoin.prototype.processDeadOfJoin = function(cI){
 	p.index[num]=para.Empty;
 	p.count--;
     }
-	
     return result;
 }
 
@@ -326,3 +330,4 @@ BattleJoin.prototype.testOfJoin = function(){
     this.printOfJoin();
     }
 }
+

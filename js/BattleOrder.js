@@ -172,7 +172,9 @@ BattleOrder.prototype.substituteOfOrder = function(orderEnum1, num1, orderEnum2,
     var candidate=this.substituteOfJoin(orderEnum1, num1, orderEnum2,num2);
     if (candidate>-1) {
 	this.order.index[oI]=candidate;
+	return true;
     }
+    return false;
 }
 
 BattleOrder.prototype.addCardOfOrder=function(cI,value,turn) {
@@ -193,9 +195,10 @@ BattleOrder.prototype.processDeadOfOrder = function(cI){
     var candidate=this.processDeadOfJoin(cI);
     this.removeCharacterOfOrder(cI);
     if (candidate>-1) {
-	this.addCharacterOfOrder(candidiate,
+	this.addCharacterOfOrder(candidate,
 				 this.initValueOfCharacterOfOrder(candidate));
     }
+    return candidate;
 }
 
 BattleOrder.prototype.clearOneTurnOfOrder = function(ov){
@@ -236,12 +239,6 @@ BattleOrder.prototype.clearOneTurnOfOrder = function(ov){
 	    this.removeCharacterOfOrder(order.index[i]);
 	}
     }
-
-    
-    
-
-
-
 }
 
 

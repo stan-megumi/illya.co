@@ -1,3 +1,8 @@
+var characterDB=loadJSON("CharacterList.json");
+var skillDB=loadJSON("SkillList_PL.json");
+var skillContentDB=loadJSON("SkillContentList_PL.json");
+var customDB=loadJSON("CustomList.json");
+
 function log(str){
     // console log wrapper
     console.log(str);
@@ -50,26 +55,6 @@ String.prototype.format = function() {
   return a
 
 
-}
-
-
-function loadImages(sources, callback,b) {
-    var images = {};
-    var loadedImages = 0;
-    var numImages = 0;
-    // get num of sources
-    for(var src in sources) {
-        numImages++;
-    }
-    for(var src in sources) {
-        images[src] = new Image();
-        images[src].onload = function() {
-	    if(++loadedImages >= numImages) {
-		callback(images);
-	    }
-        };
-        images[src].src = sources[src];
-    }
 }
 
 function indexOfDB(m_id,db){
