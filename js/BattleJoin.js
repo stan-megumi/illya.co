@@ -190,7 +190,6 @@ BattleJoin.prototype.processDeadOfJoin = function(cI){
     var b=true;
     var result=-1;
 
-
     var assert=false;
     for (i=join.RJ;i<join.Count;i+=3){
 	p=join.p[i];
@@ -246,9 +245,11 @@ BattleJoin.prototype.processDeadOfJoin = function(cI){
     }
     // if no candidate
     if (b) {
+	p=join.p[joinEnum];
 	p.index[num]=para.Empty;
 	p.count--;
     }
+    
     return result;
 }
 

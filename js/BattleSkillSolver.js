@@ -8,13 +8,13 @@ BattleSkillSolver.prototype.solve=function(caster,targets,skill,order) {
     log(targets.attr.Hp);
     targets.attr.Hp-=damage;
     log(targets.attr.Hp);
-    order.clearOneTurnOfOrder(ordervalue);
+    var result=order.clearOneTurnOfOrder(ordervalue);
     log("{0} cast spell {1} on {2}: damage {3} ordervalue {4}".format(caster.desc.name,
 								      skill,
 								      targets.desc.name,
 								      damage,
 								      ordervalue));
-    return true;
+    return result;
 }    
 
 

@@ -21,7 +21,8 @@ function BattleCharacter(index1,index2,ii) {
 	Luck: undefined,
 	QuestIndex: ii,
 	CustomIndex: index1,
-	CharacterIndex: index2
+	CharacterIndex: index2,
+	Alive: true
     };
 
     this.attr={ // attributes

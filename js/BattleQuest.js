@@ -120,7 +120,8 @@ BattleQuest.prototype.updateInfo=function(){
     var c;
     while (len--) {
 	c=this.characters[len];
-	if (c.attr.Hp<=0) {
+	if (c.attr.Hp<=0 && c.desc.Alive) {
+	    c.desc.Alive=false;
 	    var candidate=this.order.processDeadOfOrder(len);
 	    if (candidate>-1) {
 		ui.swapCharacter(len,candidate);
@@ -144,6 +145,11 @@ BattleQuest.prototype.castSkillTarget=function(qi){
     ui.setCharacterOrder(this.order);
     ui.setCharacterAction(this.order,true);
     cast.b=false;
+    var result=x.order.checkSideDeadOfJoin();
+    if (result!=SideEnum.None) {
+	var str=(result==SideEnum.Right?"Left":"Right");
+	log(str+" Side Won!!!!!!!!!!!")
+    }
 }
 
 

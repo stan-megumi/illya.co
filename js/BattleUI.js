@@ -192,7 +192,6 @@ BattleUI.prototype.deadCharacter=function(qi){ // qi: questindex gi: gridIndex
     var gi=this.data.gi[qi];
     var data=this.data.card.imageData[qi].data;
     var len=data.length/4;
-    log("{0} len is {1}".format(qi,len))
     for (var i=0;i<len;i++) {
 	data[i*4]=0;
     }
