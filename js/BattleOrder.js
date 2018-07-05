@@ -223,6 +223,7 @@ BattleOrder.prototype.clearOneTurnOfOrder = function(ov){
     var result=this.clearOneTurnOfJoin();
 
     for (i=0;i<result[0].length;i++){
+	// if there is turnmax of support
 	oI=this.indexOfCharacterOfOrder(result[0][i]); // orderIndex	
 	order.index[oI]=result[1][i];
     }
@@ -237,6 +238,7 @@ BattleOrder.prototype.clearOneTurnOfOrder = function(ov){
     var sub=order.value[0];
     var len=order.count;
     var removeVec=[];
+    // card max
     for (i=0;i<len;i++){
 	order.value[i]-=sub;
 	k=order.turn[i];
@@ -249,13 +251,13 @@ BattleOrder.prototype.clearOneTurnOfOrder = function(ov){
 	    removeVec.push(order.index[i]);
 	}
     }
+
     len=removeVec.length;
     for (i=0;i<len;i++){
 	this.removeCharacterOfOrder(removeVec[i]);
     }
 
-
-    return this.checkSideDeadOfJoin();
+    return result;
 }
 
 

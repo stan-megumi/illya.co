@@ -122,6 +122,7 @@ BattleQuest.prototype.updateInfo=function(){
 	if (c.attr.Hp<=0 && c.desc.Alive) {
 	    c.desc.Alive=false;
 	    var candidate=this.order.processDeadOfOrder(len);
+	    log( "candidate "+candidate);
 	    if (candidate>-1) {
 		ui.swapCharacter(len,candidate);
 	    }
@@ -141,7 +142,13 @@ BattleQuest.prototype.castSkillTarget=function(qi){
     cast.y=qi;
     var join=this.ui.joinOfQuestIndex(qi);
     if (join.join%3==0) {
-	var damage=this.skillSolver.solve(this.characters[current],this.characters[qi],qi,this.order);
+	var result=this.skillSolver.solve(this.characters[current],this.characters[qi],qi,this.order);
+	var damage=result.damage;
+	if (result.supportTurnMax!=undefined) {
+	    log("swap {0} {1}".format(result.supportTurnMax,result.supportSubstitute));
+	    ui.swapCharacter(result.supportTurnMax,result.supportSubstitute);
+	    ui.deadCharacter(result.supportTurnMax,0);
+	}
 
 	ui.setCharacterDamages(cast.y,damage);
 

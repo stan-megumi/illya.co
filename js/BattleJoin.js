@@ -219,6 +219,7 @@ BattleJoin.prototype.processDeadOfJoin = function(cI){
 	for (i=0;i<len;i++){
 	    if (p1.index[i]>para.Empty && p1.turn[i]==para.TurnMax) {
 		// p.turn has to be zero because of the lock of support
+		log("support dead")
 		result=p1.index[i];
 		p.index[num]=result;
 		p.turn[num]=0;
@@ -247,7 +248,6 @@ BattleJoin.prototype.processDeadOfJoin = function(cI){
     // if no candidate
 
     if (b) {
-
 	p=join.p[joinEnum];
 	p.index[num]=para.Empty;
 	p.count--;
@@ -294,10 +294,20 @@ BattleJoin.prototype.clearOneTurnOfJoin = function(){
 	    turn[j]=turnValue;
 	    if (turnValue==para.TurnMax) {
 		result1.push(p.index[j]);
-		result2.push(this.processDeadOfJoin(p.index[j]));
+		// the only event is turn max of
+		// support
+		// assume there will be only
+		// one support
 	    }
 	}
     }
+    if (result1.length>0) {
+	result2.push(this.processDeadOfJoin(result1[0]));
+	// this should update the join
+	// this should push >-1 value 
+    }
+
+
     var result=[result1,result2];
     return result;
 }
