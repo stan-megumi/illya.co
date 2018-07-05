@@ -75,7 +75,7 @@ function BattleUI(){
     var arrow=new Image();
     var data=this.data.arrow;
     var context=this.context;
-    arrow.src=oss+"img/custom/arrow.svg";
+    arrow.src="img/custom/arrow.svg";
     arrow.onload = function() {
 	context.drawImage(arrow, 0, 0, 
 			       data.width,
@@ -317,13 +317,13 @@ BattleUI.prototype.appendCharacterGUI=function(c,order){
     // setting 
 
     var sources = {
-	frame: oss+"img/skill/frame.png",
-	ult: oss+"img/skill/sp.png",
+	frame: "img/skill/frame.png",
+	ult: "img/skill/sp.png",
     };
 
     len=skill.m_ID.length;
     for (i=1;i<len;i++){
-	sources[i]=oss+"img/skill/"+skill.m_SkillType[i]+".png";
+	sources[i]="img/skill/"+skill.m_SkillType[i]+".png";
     }
     
     this.loadImages(sources, function(images) {
@@ -398,10 +398,10 @@ BattleUI.prototype.appendCharacterGUI=function(c,order){
 
 
     sources = {
-	frame: oss+"img/frame/"+desc.m_Rare+".png",
+	frame: "img/frame/"+desc.m_Rare+".png",
 	body: desc.icon,
-	element: oss+"img/element/"+desc.m_Element+".png", 
-	class0: oss+"img/class/"+desc.m_Class+".png"
+	element: "img/element/"+desc.m_Element+".png", 
+	class0: "img/class/"+desc.m_Class+".png"
     };
 
     this.loadImages(sources, function(images) {

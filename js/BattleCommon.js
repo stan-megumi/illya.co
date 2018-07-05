@@ -1,5 +1,3 @@
-var oss="https://illyapicts.oss-cn-shanghai.aliyuncs.com/"
-
 var characterDB=loadJSON("CharacterList.json");
 var skillDB=loadJSON("SkillList_PL.json");
 var skillContentDB=loadJSON("SkillContentList_PL.json");
