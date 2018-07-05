@@ -74,7 +74,7 @@ function indexOfDB(m_id,db){
 
 function loadJSON(file){
     var request = new XMLHttpRequest();
-    request.open("GET", oss+"json/"+file, false);
+    request.open("GET", "json/"+file, false);
     request.send(null);
     return JSON.parse(request.responseText);
 }
