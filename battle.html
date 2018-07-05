@@ -1,11 +1,18 @@
 <html>
 
-<body>
+<style>
+table{
+    table-layout: fixed;
+    width: 1100px;
+}
+td    {width: 500px;}
+</style>  
 
+<body>
 
 <table width="100%" cellspacing="0" cellpadding="0" border="0">
   <tr>
-    <td>
+    <td colspan="2">
       <button onclick="onSoftRefresh()">Refresh</button>
       <button onclick="onClearOneTurn()">Clear One Turn</button>
       <label id="Label">Hello</label>
@@ -13,7 +20,7 @@
   </tr>
   <tr>
     <td colspan="2">
-      <canvas id="canvasMain" height="600" width="1200">
+      <canvas id="canvasMain" height="600" width="1100">
 	Sorry, your browser does not support canvas.
       </canvas>
     </td>
@@ -21,7 +28,7 @@
 
   <tr >
     <td colspan="2">
-      <canvas id="canvasOrder" height="200" width="1200">
+      <canvas id="canvasOrder" height="200" width="1100">
 	Sorry, your browser does not support canvas.
       </canvas>
     </td>
@@ -29,13 +36,13 @@
 
   <tr>
     <td>
-      <canvas id="canvasInfo" height="500" width="600">
+      <canvas id="canvasInfo" height="500" width="550">
 	Sorry, your browser does not support canvas.
       </canvas>
     </td>
 
     <td>
-      <canvas id="canvasAction" height="500" width="600">
+      <canvas id="canvasAction" height="500" width="550">
 	Sorry, your browser does not support canvas.
       </canvas>
     </td>
