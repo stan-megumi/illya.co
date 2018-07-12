@@ -1,0 +1,43 @@
+<html>
+    <head>
+      <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+      <div id="app" class="container">
+	<card
+	  v-for="(item , i) in cards"
+	  :key="i"
+	  :data-image="item.src"
+	  >
+	  <h1 slot="header">{{item.header}}</h1>
+	  <p slot="content">{{item.content}}</p>
+	</card>
+      </div>
+      <script src="js/card.js"></script>
+    </body>
+</html>
+
+
+
+
+<!--
+	<card data-image="https://illyapicts.oss-cn-shanghai.aliyuncs.com/static/PSX_20180712_210437.jpg">
+	  <h1 slot="header">Canyons</h1>
+	  <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+	</card>
+	<card data-image="https://illyapicts.oss-cn-shanghai.aliyuncs.com/static/PSX_20180712_210540.jpg">
+	  <h1 slot="header">Beaches</h1>
+	  <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+	</card>
+	<card data-image="https://illyapicts.oss-cn-shanghai.aliyuncs.com/static/PSX_20180712_210645.jpg">
+	  <h1 slot="header">Trees</h1>
+	  <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+	</card>
+	<card data-image="https://illyapicts.oss-cn-shanghai.aliyuncs.com/static/PSX_20180712_210909.jpg">
+	  <h1 slot="header">Lakes</h1>
+	  <p slot="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+	</card>
+-->
+

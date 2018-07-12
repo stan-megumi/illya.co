@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <card
+	v-for="(item , i) in cards"
+	:key="i"
+	:data-image="item.src"
+	>
+	<h1 slot="header">{{item.header}}</h1>
+	<p slot="content">{{item.content}}</p>
+      </card>
+    </div>
+    <script src="js/card.js"></script>
+  </body>
+</html>
+
