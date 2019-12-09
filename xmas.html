@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css">
+      body {
+	  margin: 40px 0;
+	  font-family: "Raleway";
+	  font-size: 14px;
+	  font-weight: 500;
+	  background-color: #BCAAA4;
+	  -webkit-font-smoothing: antialiased;
+      }
+
+      .title {
+	  font-family: "Raleway";
+	  font-size: 24px;
+	  font-weight: 700;
+	  color: #5D4037;
+	  text-align: center;
+      }
+
+      p {
+	  line-height: 1.5em;
+      }
+
+      h1+p, p+p {
+	  margin-top: 10px;
+      }
+
+      .container {
+	  padding: 20px 20px;
+	  display: flex;
+	  flex-wrap: wrap;
+	  justify-content: center;
+      }
+      
+      .all {
+	  margin-top: 20px;
+	  padding: 20px 20px;
+	  display: flex;
+	  flex-wrap: wrap;
+	  justify-content: center;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class ="all">
+      <div id="app" class="container">
+	<card
+	  v-for="(item , i) in cards"
+	  :key="i"
+	  :data-image="item.src"
+	  >
+	  <h1 slot="header">{{item.header}}</h1>
+	  <p slot="content">{{item.content}}</p>
+	</card>
+      </div>
+      <div>
+      <canvas id="dick" width="320" height="320"></canvas>
+      <canvas id="left" width="320" height="320"></canvas>
+      </div>
+      <div>
+      <canvas id="center" width="320" height="320"></canvas>	
+      <canvas id="right" width="320" height="320"></canvas>	
+      </div>
+
+    </div>
+    <script src="js/xmas.js"></script>
+  </body>
+
+</html>
+
+
