@@ -134,23 +134,19 @@ const app = new Vue({
 	var ctx_center = canvas_center.getContext('2d');
 	var canvas_left  = document.getElementById("left")
 	var ctx_left = canvas_left.getContext('2d');
-	var canvas  = document.getElementById("origin")
-	canvas.style.display = "none"
 
-	
 	var dick_src = "img/dick.png"    
-	var left_src = "img/left.jpg"
-	var right_src = "img/right.jpg"
-	var center_src = "img/center.jpg"
+	var left_src = "img/left.png"
+	var right_src = "img/center.png"
+	var center_src = "img/dick.png"
 
 	
-	if (canvas.getContext) {   
-	    var ctx = canvas.getContext('2d');
-	    var imageObj = new Image();
-	    imageObj.src = this.src;
-	    imageObj.onload = function () {
-		loaded_origin = 1;
-	    }
+
+
+	var imageObj = new Image();
+	imageObj.src = this.src;
+	imageObj.onload = function () {
+	    loaded_origin = 1;
 	}
 
 	var imageObj1 = new Image();
@@ -180,10 +176,10 @@ const app = new Vue({
 	
 	var timer = setInterval( function () {
 	    if (loaded_origin == 1) {
-		ctx.drawImage (imageObj,0,0,320,320)
-		ctx_dick.drawImage (canvas,0,0,320,320)	    
-		ctx_right.drawImage (canvas,0,0,320,320)
-		ctx_center.drawImage (canvas,0,0,320,320)
+		ctx_dick.drawImage (imageObj,0,0,320,320)	    
+		ctx_right.drawImage (imageObj,0,0,320,320)
+		ctx_center.drawImage (imageObj,0,0,320,320)
+		ctx_left.drawImage (imageObj,0,0,320,320)
 		loaded_origin = 2
 	    }
 	    
@@ -196,19 +192,19 @@ const app = new Vue({
 	    }
 
 	    if (loaded_left == 1 && loaded_origin == 2) {
-		ctx_left.drawImage (imageObj2,2,20,320,320)
+		ctx_left.drawImage (imageObj2,2,20,150,150)
 		ctx_left.font = '700 30px Raleway';
 		counter += 1;
 	    }
 
 	    if (loaded_center == 1 && loaded_origin == 2) {
-		ctx_center.drawImage (imageObj3,0,20,320,320)
+		ctx_center.drawImage (imageObj3,0,20,150,150)
 		ctx_center.font = '700 30px Raleway';
 		counter += 1;
 	    }
 
 	    if (loaded_right == 1 && loaded_origin == 2) {
-		ctx_right.drawImage (imageObj4,0,20,320,320)
+		ctx_right.drawImage (imageObj4,0,20,150,150)
 		ctx_right.font = '700 30px Raleway';
 		counter += 1;
 	    }
