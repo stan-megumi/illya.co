@@ -74,6 +74,13 @@ Vue.component('card', {
   }
 });
 
+function saveImg() {
+    var canvasData = $('#target').children('canvas');
+    var a = document.createElement('a')
+    a.href = canvasData[0].toDataURL();
+    a.download = 'qqXmas'
+    a.click();
+}
 
 function getUrlKey(name){
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
@@ -90,6 +97,10 @@ const app = new Vue({
 	      src: "",
 	    },
 	    { header: 'krr',
+	      content: '',
+	      src: "",
+	    },
+	    { header: 'save',
 	      content: '',
 	      src: "",
 	    },
@@ -215,6 +226,11 @@ const app = new Vue({
 	    }
 
 	    if (counter == 4) {
+		var image = new Image();
+		image.crossOrigin = 'Anonymous';
+		image.setAttribute("crossOrigin",'anonymous');
+		image.src = canvas_dick.toDataURL("image/dick")
+		this.cards[2].src = image.src;
 		clearInterval(timer);
 	    }
 
