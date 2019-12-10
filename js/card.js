@@ -149,7 +149,7 @@ const app = new Vue({
 	this.cards[7].src = wiki + "30032000" + ".org.webp"
 	this.cards[8].src = wiki + "17002010" + ".org.webp"
 	this.cards[9].src = wiki + "17012010" + ".org.webp"
-	this.cards[10].src = wiki + "30032000" + ".org.webp"
+	this.cards[10].src = wiki + "15012010" + ".org.webp"
 	this.cards[11].src = wiki + "30042000" + ".org.webp"
 
 	console.log (this.cards[0].src)
