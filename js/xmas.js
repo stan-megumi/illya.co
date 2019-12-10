@@ -79,7 +79,6 @@ function getUrlKey(name){
     return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
 }
 
-
 const app = new Vue({
     el: '#app',
     data: {
@@ -117,6 +116,7 @@ const app = new Vue({
 	if (!msg)
 	{
 	    msg = "让我康康你的发育"
+	    msg1 = "圣诞快乐,宝贝"
 	}
 
 	var counter = 0;
@@ -139,7 +139,6 @@ const app = new Vue({
 	var left_src = "img/left.png"
 	var right_src = "img/center.png"
 	var center_src = "img/dick.png"
-
 	
 
 
@@ -187,32 +186,38 @@ const app = new Vue({
 		ctx_dick.drawImage (imageObj1,0,20,320,320)
 		ctx_dick.font = '700 30px Raleway';
 		ctx_dick.fillStyle = 'white';
-		ctx_dick.fillText(msg,(320 - msg.length * 30)/2,300);
+		ctx_dick.fillText(msg,(350 - msg.length * 30)/2,300);
 		counter += 1;
 	    }
 
 	    if (loaded_left == 1 && loaded_origin == 2) {
-		ctx_left.drawImage (imageObj2,2,20,150,150)
-		ctx_left.font = '700 30px Raleway';
+		var degree = -20;
+		ctx_left.rotate(degree*Math.PI/180);		
+		ctx_left.drawImage (imageObj2,-65,-15,220,220)
+		ctx_left.rotate(degree*Math.PI/180);		
 		counter += 1;
 	    }
 
 	    if (loaded_center == 1 && loaded_origin == 2) {
-		ctx_center.drawImage (imageObj3,0,20,150,150)
+		ctx_center.drawImage (imageObj3,0,20,320,320)
 		ctx_center.font = '700 30px Raleway';
+		ctx_center.fillStyle = 'white';
+		ctx_center.fillText(msg1,(350 - msg.length * 30)/2,300);
 		counter += 1;
 	    }
 
 	    if (loaded_right == 1 && loaded_origin == 2) {
-		ctx_right.drawImage (imageObj4,0,20,150,150)
-		ctx_right.font = '700 30px Raleway';
+		var degree = 0;
+		ctx_right.rotate(degree*Math.PI/180);		
+		ctx_right.drawImage (imageObj4,30,-50,300,250)
+		ctx_right.rotate(degree*Math.PI/180);		
 		counter += 1;
 	    }
-	    
 
 	    if (counter == 4) {
 		clearInterval(timer);
 	    }
+
 	}, 10);
     },
     mounted(){

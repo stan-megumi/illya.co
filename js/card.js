@@ -72,47 +72,87 @@ Vue.component('card', {
   }
 });
 
+function getUrlKey(name){
+    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
+}
+
+
 const app = new Vue({
     el: '#app',
     data: {
 	cards: [
 	    { header: ' ',
 	      content: '',
-	      src: "https://illyapicts.oss-cn-shanghai.aliyuncs.com/static/PSX_20180712_210704.jpg",
+	      src: "",
 	    },
 	    { header: '',
 	      content: "",
-	      src: "https://illyapicts.oss-cn-shanghai.aliyuncs.com/static/PSX_20180712_210725.jpg",
+	      src: "",
 	    },
 	    { header: '',
 	      content: "",
-	      src: "https://illyapicts.oss-cn-shanghai.aliyuncs.com/static/PSX_20180712_210742.jpg",
+	      src: "",
 	    },
 	    { header: '',
 	      content: "",
-	      src: "https://illyapicts.oss-cn-shanghai.aliyuncs.com/static/PSX_20180712_210810.jpg",
+	      src: ""
 	    },
 	    { header: '',
 	      content: "",
-	      src: "https://illyapicts.oss-cn-shanghai.aliyuncs.com/static/PSX_20180712_210827.jpg",
+	      src: "",
 	    },
 	    { header: '',
 	      content: "",
-	      src: "https://illyapicts.oss-cn-shanghai.aliyuncs.com/static/PSX_20180712_210909.jpg",
+	      src: ""
 	    },
 	    { header: '',
 	      content: "",
-	      src: "https://illyapicts.oss-cn-shanghai.aliyuncs.com/static/PSX_20180712_210645.jpg",
+	      src: ""
 	    },
 	    { header: '',
 	      content: "",
-	      src: "https://illyapicts.oss-cn-shanghai.aliyuncs.com/static/PSX_20180712_210540.jpg",
+	      src: ""
 	    },
 	    { header: '',
 	      content: "",
-	      src: "https://illyapicts.oss-cn-shanghai.aliyuncs.com/static/PSX_20180712_210437.jpg",
+	      src: ""
+	    },
+	    { header: '',
+	      content: "",
+	      src: ""
+	    },
+	    { header: '',
+	      content: "",
+	      src: ""
+	    },
+	    { header: '',
+	      content: "",
+	      src: ""
 	    },
 	]
-    }
+    },
+    created () {
+	var card_id = getUrlKey('krr')
+	if (!card_id)
+	{
+	    card_id = "26012010"
+	}
+
+	wiki = "https://wiki.kirafan.moe/static/assets/texture/charauiresource/charaillustfull/charaillust_full_";
+	this.cards[0].src = wiki + card_id + ".org.webp"
+	this.cards[1].src = wiki + "30022010" + ".org.webp"
+	this.cards[2].src = wiki + "14012010" + ".org.webp"
+	this.cards[3].src = wiki + "29012000" + ".org.webp"
+	this.cards[4].src = wiki + "15082000" + ".org.webp"
+	this.cards[5].src = wiki + "15002010" + ".org.webp"
+	this.cards[6].src = wiki + "30012010" + ".org.webp"
+	this.cards[7].src = wiki + "30032000" + ".org.webp"
+	this.cards[8].src = wiki + "17002010" + ".org.webp"
+	this.cards[9].src = wiki + "17012010" + ".org.webp"
+	this.cards[10].src = wiki + "30032000" + ".org.webp"
+	this.cards[11].src = wiki + "30042000" + ".org.webp"
+
+	console.log (this.cards[0].src)
+    },
 });
 
